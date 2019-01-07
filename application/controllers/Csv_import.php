@@ -22,11 +22,14 @@ class Csv_import extends CI_Controller {
         <div class="table-responsive">
         	<table class="table table-bordered table-striped">
         		<tr>
-        			<th>Sr. No</th>
-        			<th>First Name</th>
-        			<th>Last Name</th>
-        			<th>Phone</th>
-        			<th>Email Address</th>
+        			<th>id</th>
+        			<th>Nome</th>
+        			<th>Dt.Matric</th>
+        			<th>Dt.Nasc</th>
+        			<th>Situação</th>
+        			<th>Matrícula</th>
+        			<th>idMEC</th>
+        			<th>Observação</th>
         		</tr>
 		';
 		$count = 0;
@@ -34,14 +37,18 @@ class Csv_import extends CI_Controller {
 		{
 			foreach($result->result() as $row)
 			{
-				$count = $count + 1;
+				
 				$output .= '
 				<tr>
-					<td>'.$count.'</td>
-					<td>'.$row->first_name.'</td>
-					<td>'.$row->last_name.'</td>
-					<td>'.$row->phone.'</td>
-					<td>'.$row->email.'</td>
+					
+					<td>'.$row->id.'</td>
+					<td>'.$row->nome.'</td>
+					<td>'.$row->dtMatric.'</td>
+					<td>'.$row->dtNasc.'</td>
+					<td>'.$row->situacao.'</td>
+					<td>'.$row->matricula.'</td>
+					<td>'.$row->idMec.'</td>
+					<td>'.$row->obs.'</td>
 				</tr>
 				';
 			}
@@ -65,13 +72,13 @@ class Csv_import extends CI_Controller {
 		{
 			$data[] = array(
                         'id'                    =>      $row["id"], 
-                        'nome'                  =>	$row["Nome"],
-        		'dtMatric'		=>	$row["Dt.Matric"],
-        		'dtNasc'                =>	$row["Dt.Nasc"],
-        		'situacao'		=>	$row["Situação"],
-        		'matricula'		=>	$row["Matrícula"],
-        		'idMec'                 =>	$row["Id.MEC"],
-        		'obs'                 =>	$row["Observação"]
+                        'nome'                  =>	$row["nome"],
+        		'dtMatric'		=>	$row["dtMatric"],
+        		'dtNasc'                =>	$row["dtNasc"],
+        		'situacao'		=>	$row["situacao"],
+        		'matricula'		=>	$row["matricula"],
+        		'idMec'                 =>	$row["idMec"],
+        		'obs'                   =>	$row["obs"]
 			);
 		}
 		$this->csv_import_model->insert($data);
