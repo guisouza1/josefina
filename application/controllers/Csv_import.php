@@ -64,10 +64,14 @@ class Csv_import extends CI_Controller {
 		foreach($file_data as $row)
 		{
 			$data[] = array(
-				'first_name'	=>	$row["First Name"],
-        		'last_name'		=>	$row["Last Name"],
-        		'phone'			=>	$row["Phone"],
-        		'email'			=>	$row["Email"]
+                        'id'                    =>      $row["id"], 
+                        'nome'                  =>	$row["Nome"],
+        		'dtMatric'		=>	$row["Dt.Matric"],
+        		'dtNasc'                =>	$row["Dt.Nasc"],
+        		'situacao'		=>	$row["Situação"],
+        		'matricula'		=>	$row["Matrícula"],
+        		'idMec'                 =>	$row["Id.MEC"],
+        		'obs'                 =>	$row["Observação"]
 			);
 		}
 		$this->csv_import_model->insert($data);
